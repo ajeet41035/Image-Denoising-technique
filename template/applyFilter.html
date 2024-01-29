@@ -1,0 +1,128 @@
+<!-- filters/templates/filters/filter_page.html -->
+<!DOCTYPE html>
+<html>
+<head>
+   
+    <title>Filter Page</title>
+    
+        {% include 'link.html' %}
+        <style>
+            body{
+                background-color: #01204c;
+            }
+            .header{
+                color: #fff;
+                text-align: center;
+                justify-content: center;
+                margin-top: 80px;
+            }
+            .para{
+                color: #fff;
+                text-align: center;
+                justify-content: center;
+                font-size: 20px;
+                margin-top: 30px;
+            }
+         .card-column{
+          padding: 15px 75px;
+         }
+        </style>    
+</head>
+
+<body>
+
+<section class="section">
+    <div>
+    <h2 class="header">Ready to transform Your Images?</h2>
+    <p class="para">Don't wait any longer. Experience the wonders of image denoising and elevate your visual content to new heights. 
+      Apply the filters!  </p>
+</div>
+</section>
+{% comment %} 2nd child {% endcomment %}
+
+<div class="container mt-5 ">
+  <div class="row "> <!-- Added justify-content-around for spacing on both sides -->
+    <div class="col-md-4 mb-4 card-column">
+      <div class="card" style="width: 100%; background-color: #cdfad5;">
+        <div class="card-body text-center">
+          <h5 class="card-title" style="font-size: 25px;">Mean Filter: Smoothing with Precision</h5>
+          <p class="card-text" style="font-size: 20px;">Experience the power of the Mean filter. It is also known as the averaging filter. 
+            Smooth out unwanted noise while preserving fine details. Enhance the overall visual quality of your image.</p>
+          <a href="{% url 'apply_mean_filter' %}" class="btn btn-secondary mt-2">Apply Mean Filter</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4 card-column">
+      <div class="card" style="width: 100%; background-color: #cdfad5;">
+        <div class="card-body text-center">
+          <h5 class="card-title" style="font-size: 25px;">Median Filter: Eliminating Noise Effectively</h5>
+          <p class="card-text" style="font-size: 20px;">Remove noise effectively with the Median filter. 
+            This powerful technique diminishes the impact of random pixel variations, resulting in a cleaner and more refined image.</p>
+          <a href="{% url 'apply_median_filter' %}" class="btn btn-secondary mt-2">Apply Median Filter</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4 card-column">
+      <div class="card " style="width: 100%; background-color: #cdfad5;">
+        <div class="card-body text-center">
+          <h5 class="card-title" style="font-size: 25px;">Gaussian Filter: Achieve Smooth and Natural Results</h5>
+          <p class="card-text" style="font-size: 20px;">Discover the Gaussian filter, known for creating smooth and natural 
+            transitions. Reduce noise and enhance clarity in your images without sacrificing important details.</p>
+          <a href="{% url 'apply_gaussian_filter' %}" class="btn btn-secondary mt-2">Apply Gaussian Filter</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- footer -->
+ <footer class="bg-dark text-center text-white" style="margin-top: 80px;">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-google"></i
+      ></a>
+
+      <!-- Instagram -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-instagram"></i
+      ></a>
+
+      <!-- Linkedin -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-linkedin-in"></i
+      ></a>
+
+      <!-- Github -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+        ><i class="fab fa-github"></i
+      ></a>
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    
+  <p>All rights reserved @- Designed by AAPDA-2023</p>
+  </div>
+  <!-- Copyright -->
+</footer>
+</body>
+</html>

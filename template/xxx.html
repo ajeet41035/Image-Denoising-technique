@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Processing</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+   
+           
+            <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="image" required>
+            <button type="submit">Upload</button>
+            </form>
+
+         
+
+   
+</body>
+</html> 
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Processing</title>
+    {% include 'link.html' %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="cont">
+        <div class="short">
+            <h1>Image Denoising: Enhancing<br> Visible Clarity</h1>
+            <br>
+            <p>Discover the art of image denoising and bring out the hidden<br> beauty in your photos. Enhance details and reduce noise <br>with powerful filters.</p>
+            <br>
+            <!-- Upload Image Form -->
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="file" name="image" required>
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+        <div class="img">
+            <img src="{% static 'Image1.jpg.png' %}" width="500" alt="Image">
+        </div>
+    </div>
+
+    <!-- Discover the Magic Section -->
+    <div class="container discover">
+        <h2>Discover the Magic</h2>
+        <div class="row">
+            <!-- Card 1 -->
+            <div class="col-md-4 card-column">
+                <div class="card" style="width: 100%; height: 400px; background-color: #cdfad5;">
+                    <img src="{% static 'images/img3.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Magical Transformations</strong></h5>
+                        <p class="card-text">Witness the incredible power of image denoising. Experience the magic as we remove noise and enhance the beauty within your photos.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="col-md-4 card-column">
+                <div class="card" style="width: 100%; height: 400px; background-color: #cdfad5;">
+                    <img src="{% static 'images/img2.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Before and After</strong></h5>
+                        <p class="card-text">See the dramatic difference image denoising can make in your photographs. Compare the original image with the enhanced version to truly appreciate the improvement.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="col-md-4 card-column">
+                <div class="card" style="width: 100%; height: 400px; background-color: #cdfad5;">
+                    <img src="{% static 'images/img4.jpg' %}" class="card-img-top img2" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Unleash the Visual Potential</strong></h5>
+                        <p class="card-text">Unleash the hidden potential of your images. Let our advanced denoising techniques reveal details and bring out the true essence of your photographs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-center text-white">
+        <div class="container p-4 pb-0">
+            <section class="mb-4">
+                <!-- Social Media Icons -->
+                <!-- Include your social media links here -->
+            </section>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            <p>All rights reserved @- Image Processing</p>
+        </div>
+    </footer>
+
+    <!-- Include your JavaScript file -->
+    <script src="{% static 'index.js' %}"></script>
+</body>
+</html>

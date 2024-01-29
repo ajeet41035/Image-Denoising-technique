@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Original and Gaussian Filtered Images</title>
+    {% include 'link.html' %}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #01204c;
+            font-family: cursive;
+        }
+        .original, .filter {
+            margin-bottom: 20px; /* Adjust the margin as needed */
+        }
+        .original h3, .filter h3 {
+            margin-bottom: 40px; /* Add a bottom margin to the h3 elements */
+        }
+        .container {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+        }
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .card-img {
+            width: 80%; /* Adjust the width as needed */
+            max-width: 100%;
+            max-height: 100%;
+            margin: auto;
+            border-radius: 10px;
+            border: 5px solid rgba(0, 0, 0, 0.3);
+        }
+        .download {
+            margin-top: 10px;
+          
+        }
+
+        /* Responsive styles */
+        @media (min-width: 768px) {
+            .image-container {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+            .download {
+                margin-left: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <div class="original " >
+                <h3 >Original Image</h3>
+                {% if request.session.uploaded_image_id %}
+                    {% with request.session.uploaded_image_id as original_image_data %}
+                        <img src="data:image/jpeg;base64,{{ original_image_data }}" class="card-img" alt="Original Image">
+                    {% endwith %}
+                {% else %}
+                    <p>No original image data available.</p>
+                {% endif %}
+            </div>
+            <div class="filter">
+                <h3>Gaussian Filtered Image</h3>
+                {% if gaussian_filtered_image_data %}
+                    <img src="data:image/jpeg;base64,{{ gaussian_filtered_image_data }}" class="card-img" alt="Gaussian Filtered Image">
+                {% else %}
+                    <p>No Gaussian filtered image data available.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Download Button for Gaussian Filtered Image -->
+        <div class="download">
+            <a href="#" id="downloadGaussianButton" download="gaussian_filtered_image.jpg">
+                <button class="btn btn-primary mt-2">Download</button>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('downloadGaussianButton').addEventListener('click', function() {
+            var imgData = '{{ gaussian_filtered_image_data }}';
+            var a = document.createElement('a');
+            a.href = 'data:image/jpeg;base64,' + imgData;
+            a.download = 'gaussian_filtered_image.jpg';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+    </script>
+</body>
+</html>

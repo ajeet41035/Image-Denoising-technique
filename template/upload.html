@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Processing</title>
+    {% include 'link.html' %}
+   
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: aquamarine;
+
+        }
+        
+     .custom-title {
+        font-size: 25px !important;
+    }
+
+    .custom-text {
+        font-size: 17px !important;
+    }
+    .card-column{
+        margin-top: 30px;
+    }
+   
+</style>
+
+</head>
+
+<body>
+
+        <div class="cont">
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-md-5">
+                    <h1 class="display-5" style=" color: white; text-align: left; font-size: 45px; margin-left: 28px">Image Denoising: 
+                        Enhancing Visible Clarity</h1>
+                    <p class="lead " style=" color: white; text-align: left; font-size: 20px;  margin-left: 28px">Discover the 
+                        art of image denoising and bring out the hidden beauty in your photos. Enhance details and reduce noise 
+                        with powerful filters.</p>
+                    <div class="upload mt-4" style="text-align: left;  margin-left: 28px">
+            
+                 <form method="post" enctype="multipart/form-data" id="uploadForm">
+    {% csrf_token %}
+    <input type="file" name="image" id="imageInput" style="display: none;" required>
+    
+   <button class="btn btn-primary" type="button" onclick="uploadImage()">upload Image</button>
+</form>
+             
+                    </div>
+                </div>
+  <div class="col-md-6">
+    <img src="{% static 'img/image11.jpg' %}" class="img-fluid float-right " alt="Image 4" width="450">
+</div>
+
+
+            </div>
+        </div>
+
+        <!-- Discover the magic -->
+        <div class="row ">
+            <div class="col" style="margin-top: 30px;">
+                <h2 class="text-center discover">Discover the Magic</h2>
+            </div>
+        </div>
+
+        <div class="row  row-cols-1 row-cols-md-4 row-cols-lg-3 g-3  justify-content-center" style="margin-top: 20px;">
+            <div class="col-md-4 mb-4 " >
+                <div class="card" style="background-color: #cdfad5; width: 300px; height: 400px; margin-left: 55px;">
+                    <img src="{% static 'img/img3.jpeg' %}" class="card-img-top" alt="Example Image">
+                    <div class="card-body">
+                        <h5 class="card-title custom-title" ><strong>Magical Transformations</strong></h5>
+                        <p class="card-text custom-text"  >Witness the incredible power of image denoising. 
+                            Experience the magic as we remove noise and enhance the beauty within your photos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4 ">
+                <div class="card" style="background-color: #cdfad5; width: 300px; height: 400px;  margin-left: 55px;">
+                    <img src="{% static 'img/img1.jpeg' %}" class="card-img-top" alt="Example Image">
+                    <div class="card-body">
+                        <h5 class="card-title custom-title" ><strong>Before and After</strong></h5>
+                        <p class="card-text custom-text" >See the dramatic difference image denoising can make in your photographs. 
+                            Compare the original image with the enhanced version to truly appreciate the improvement.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4 ">
+                <div class="card" style="background-color: #cdfad5; width: 300px; height: 400px;  margin-left: 55px;">
+                    <img src="{% static 'img/img4.jpeg' %}" class="card-img-top" alt="Example Image">
+                    <div class="card-body">
+                        <h5 class="card-title custom-title" ><strong>Unleash the Visual Potential</strong></h5>
+                        <p class="card-text custom-text" >Unleash the hidden potential of your images. Let our advanced denoising 
+                            techniques reveal details and bring out the true essence of your photographs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-center text-white mt-1">
+        <!-- Social media icons -->
+        <section class="mb-4">
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-github"></i></a>
+        </section>
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            <p>All rights reserved @- Image Processing</p>
+        </div>
+    </footer>
+
+ 
+
+
+    <!-- File input script -->
+    <script>
+          var isImageUploaded = false;
+
+    function uploadImage() {
+        if (!isImageUploaded) {
+            // If an image is not uploaded, trigger the file input
+            document.getElementById('imageInput').click();
+        } else {
+            // If an image is uploaded, submit the form
+            document.getElementById('uploadForm').submit();
+        }
+        isImageUploaded = !isImageUploaded; // Toggle the state
+    }
+
+    // Update the button text based on the state
+    document.getElementById('uploadForm').addEventListener('change', function () {
+        var buttonText = isImageUploaded ? 'Upload Image' : 'Submit Image';
+        document.querySelector('button[type="button"]').innerText = buttonText;
+    });
+    </script>
+</body>
+</html>
